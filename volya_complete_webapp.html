@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ede4d4"><title>ВОЛЯ — возвращение к себе</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ede4d4;--paper2:#ded3c1;--red:#d83a24;--ink:#111;--muted:#6f675e;--line:#c8beb0;--white:#f8f2e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Montserrat,sans-serif;}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:8;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+button,input,textarea,select{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{max-width:1250px;margin:auto;padding:0 5vw}.top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}.logo{font:900 20px Unbounded,sans-serif;letter-spacing:-2px}.logo b{color:var(--red)}.nav{display:flex;gap:25px;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.nav a:hover{color:var(--red)}.pill{border:1px solid var(--ink);padding:11px 15px;border-radius:30px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;background:transparent}
+.view{display:none}.view.active{display:block}.hero{display:grid;grid-template-columns:1fr .9fr;gap:5vw;align-items:center;padding-top:60px;padding-bottom:68px;min-height:650px}.eyebrow,.kicker{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:26px;height:3px;background:var(--red);vertical-align:middle;margin-right:12px}h1{font:900 clamp(76px,12vw,150px)/.9 Unbounded,sans-serif;letter-spacing:-.1em;margin:32px 0 24px}h1 span{color:var(--red)}h2{font:900 clamp(36px,5vw,66px)/.97 Unbounded,sans-serif;letter-spacing:-.08em;margin:14px 0}h3{font-family:Montserrat,sans-serif}.sub{font:900 clamp(23px,3vw,38px)/1.1 Montserrat,sans-serif;letter-spacing:-.06em;text-transform:uppercase}.sub mark{background:var(--ink);color:var(--paper);padding:0 .12em}.intro{font-size:14px;line-height:1.85;color:#514a42;max-width:460px;margin:22px 0}.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;background:var(--red);color:white;border:0;padding:16px 21px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:.18s}.btn:hover{background:#ad2919;transform:translateY(-2px)}.btn.dark{background:var(--ink);color:var(--paper)}.btn.outline{background:transparent;color:var(--ink);border:1px solid var(--ink)}.under{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid;padding:12px 0}
+.poster{min-height:520px;background:#111111;color:var(--paper);padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;isolation:isolate}.poster:before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(150deg,transparent 0 23%,#d83a24 23.2% 39%,transparent 39.2%),radial-gradient(ellipse at 45% 35%,#6b655d,#242321 40%,#111 72%)}.poster:after{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 5px,#ffffff0c 6px,transparent 7px)}.ptop,.pfoot{display:flex;justify-content:space-between;text-transform:uppercase;font-size:9px;letter-spacing:.15em}.silhouette{position:absolute;right:4%;top:13%;width:66%;height:54%;background:radial-gradient(ellipse at 48% 27%,#c4bcb0 0 8%,#5d5851 9% 17%,transparent 18%),radial-gradient(ellipse at 50% 60%,#8b8378 0 23%,#262522 24% 42%,transparent 43%);filter:grayscale(1) contrast(1.5);clip-path:polygon(22% 0,70% 0,95% 22%,100% 100%,0 100%,4% 25%);opacity:.8}.ptitle{font:900 clamp(42px,6.5vw,82px)/.86 Unbounded,sans-serif;letter-spacing:-.1em;position:relative;margin-top:auto}.ptitle span{display:block;color:var(--red);font-size:1.08em}.stamp{border:1px solid;padding:9px 10px}.ticker{background:var(--red);color:white;padding:13px 0;white-space:nowrap;overflow:hidden;text-align:center;font:900 12px Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.section{padding:76px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:30px}.section-head p{max-width:320px;font-size:13px;line-height:1.75;color:var(--muted)}.kicker{color:var(--red)}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{border:1px solid var(--line);padding:24px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.feature .num{font:800 12px Unbounded,sans-serif;color:var(--red)}.feature h3{font-size:21px;letter-spacing:-.05em;text-transform:uppercase;margin:20px 0 6px}.feature p{font-size:12px;line-height:1.7;color:var(--muted);margin-bottom:0}
+.page-head{padding:50px 0 26px;display:flex;justify-content:space-between;gap:24px;align-items:end}.page-head p{max-width:420px;color:var(--muted);font-size:13px;line-height:1.7}.panel{border:1px solid var(--line);background:#f2eadd;padding:clamp(20px,4vw,42px);margin-bottom:70px}.test-shell{display:grid;grid-template-columns:245px 1fr;border:1px solid var(--line);background:var(--paper)}.test-side{background:var(--ink);color:var(--paper);padding:26px;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}.test-side .big{font:900 55px/.92 Unbounded,sans-serif;letter-spacing:-.09em;color:var(--red)}.test-side p{font-size:12px;line-height:1.8;color:#c4bdb2}.test-main{padding:clamp(20px,4vw,42px)}.meta{display:flex;justify-content:space-between;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;gap:15px}.track{height:4px;background:#cfc4b4;margin-bottom:28px}.track span{display:block;height:100%;width:10%;background:var(--red);transition:width .2s}.question{font:900 clamp(22px,3vw,32px)/1.13 Montserrat,sans-serif;letter-spacing:-.05em;margin:0 0 23px}.options{display:grid;gap:9px}.option{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);cursor:pointer;transition:.15s;font-size:13px;line-height:1.55}.option:hover,.option.selected{border-color:var(--ink);background:#e2d6c5}.option input{accent-color:var(--red);margin-top:4px;flex-shrink:0}.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:24px}.err{color:var(--red);font-size:12px;min-height:18px;margin-top:10px}.small-btn{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:13px 16px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.small-btn.primary{background:var(--ink);color:var(--paper)}.small-btn:disabled{opacity:.35;cursor:not-allowed}.result-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:800}.result-title{font:900 clamp(29px,4.5vw,50px)/1 Unbounded,sans-serif;letter-spacing:-.08em;margin:15px 0}.result-copy{font-size:14px;line-height:1.8;max-width:700px}.note{font-size:11px;line-height:1.7;color:var(--muted);border-top:1px solid var(--line);padding-top:15px;margin-top:20px}
+.journal-layout{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}.day-list{border:1px solid var(--line);background:#f2eadd;padding:18px;position:sticky;top:15px}.day-list-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.12em}.day-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.day-btn{aspect-ratio:1;border:1px solid var(--line);background:transparent;font-size:11px;font-weight:800}.day-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}.day-btn.done{background:var(--red);color:#fff;border-color:var(--red)}.day-btn.locked{opacity:.3}.day-list-foot{margin-top:18px;border-top:1px solid var(--line);padding-top:15px;font-size:11px;line-height:1.6;color:var(--muted)}.journal-main{border:1px solid var(--line);background:#f2eadd;padding:clamp(20px,3.5vw,36px)}.journal-daytop{display:flex;justify-content:space-between;gap:15px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px}.day-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}.day-title{font:900 clamp(28px,4vw,42px)/1 Unbounded,sans-serif;letter-spacing:-.08em;margin:9px 0}.done-chip{font-size:9px;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);padding:9px 10px;white-space:nowrap}.field{margin:0 0 23px}.field label,.field-label{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:10px}.field textarea{display:block;width:100%;min-height:105px;resize:vertical;border:1px solid var(--line);background:#fbf5eb;padding:14px;font-size:13px;line-height:1.65;outline:none}.field textarea:focus,.field select:focus{border-color:var(--red)}.field select{width:100%;padding:13px;border:1px solid var(--line);background:#fbf5eb;font-size:13px}.field input[type=range]{width:100%;accent-color:var(--red)}.range-row{display:flex;align-items:center;gap:15px}.range-row output{font:800 14px Unbounded,sans-serif;color:var(--red);min-width:30px}.journal-grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.day-slogan{background:var(--ink);color:var(--paper);padding:25px;margin:24px 0;position:relative;overflow:hidden}.day-slogan:after{content:"";position:absolute;right:-22px;bottom:-44px;width:140px;height:140px;border:18px solid var(--red);border-radius:50%;opacity:.7}.slogan-kicker{font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:var(--red);font-weight:800}.slogan-text{font:900 clamp(22px,3.5vw,36px)/1.12 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:-.05em;max-width:650px;margin:12px 0 0;position:relative;z-index:1}.slogan-note{font-size:11px;color:#c4bdb2;margin-top:12px;max-width:520px;line-height:1.7;position:relative;z-index:1}.journal-actions{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:25px}.saved-note{font-size:11px;color:var(--muted);align-self:center}
+.overview{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:25px}.stat{border:1px solid var(--line);padding:20px;background:#f2eadd}.stat strong{font:900 35px Unbounded,sans-serif;letter-spacing:-.08em;display:block}.stat span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.dark-section{background:var(--ink);color:var(--paper);padding:65px 0}.dark-section p{color:#c4bdb2;line-height:1.8;max-width:500px}.foot{padding:25px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:800px){.wrap{padding:0 20px}.nav{display:none}.top{height:66px}.hero{grid-template-columns:1fr;padding-top:40px;gap:28px;min-height:unset}.hero h1{font-size:clamp(76px,20vw,125px)}.poster{min-height:440px}.ptitle{font-size:clamp(44px,12vw,75px)}.section{padding:60px 0}.section-head,.page-head{display:block}.section-head p,.page-head p{margin-top:18px}.feature-grid{grid-template-columns:1fr}.feature{min-height:150px}.test-shell{grid-template-columns:1fr}.test-side{min-height:unset;gap:15px;padding:20px}.test-side .big{font-size:42px}.test-main{padding:20px}.journal-layout{grid-template-columns:1fr}.day-list{position:static}.day-grid{grid-template-columns:repeat(8,1fr)}.day-btn{font-size:10px}.journal-grid2,.overview{grid-template-columns:1fr}.journal-main{padding:20px}.journal-daytop{flex-direction:column}.controls{align-items:stretch}.controls button{flex:1}.journal-actions .btn,.journal-actions .small-btn{flex:1}.saved-note{width:100%;order:3}}
+
+/* VOLYA motion layer */
+:root{--motion-ease:cubic-bezier(.2,.75,.2,1)}
+body{animation:paperIn .65s var(--motion-ease) both}
+@keyframes paperIn{from{background:#111111;opacity:.7}to{background:var(--paper);opacity:1}}
+.ready .top{animation:topDrop .65s .08s var(--motion-ease) backwards}
+@keyframes topDrop{from{transform:translateY(-18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.ready .hero>div:first-child{animation:heroRise .85s .12s var(--motion-ease) backwards}
+.ready .poster{animation:posterRise .95s .18s var(--motion-ease) backwards;transform-origin:50% 60%}
+.poster:before{animation:posterShift 12s ease-in-out infinite alternate}
+.poster:after{animation:grainFlicker 4s steps(2,end) infinite}
+@keyframes heroRise{from{transform:translateY(22px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes posterRise{from{transform:translateY(25px) rotate(1deg) scale(.97);opacity:0;filter:contrast(1.4)}to{transform:translateY(0) rotate(0) scale(1);opacity:1;filter:contrast(1)}}
+@keyframes posterShift{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(2%,-1%,0) scale(1.05)}}
+@keyframes grainFlicker{0%,100%{opacity:.9}49%{opacity:.7}50%{opacity:1}}
+.ready .ptitle{animation:titleCut .8s .5s var(--motion-ease) backwards}
+@keyframes titleCut{from{clip-path:inset(0 100% 0 0);transform:translateX(-12px)}to{clip-path:inset(0 0 0 0);transform:translateX(0)}}
+.btn,.small-btn,.pill,.day-btn,.option,.feature,.stat,.panel,.poster{transition:transform .25s var(--motion-ease),background-color .25s,border-color .25s,color .25s,box-shadow .25s}
+.btn:active,.small-btn:active,.pill:active{transform:scale(.97)}
+.btn:hover{box-shadow:5px 5px 0 var(--ink)}
+.small-btn:hover,.pill:hover{background:var(--ink);color:var(--paper)}
+.view{display:none}
+.view.active{display:block;animation:viewEnter .5s .12s var(--motion-ease) backwards}
+@keyframes viewEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+
+.view.active .page-head,.view.active .section-head{animation:heroRise .5s .16s var(--motion-ease) backwards}
+.view.active .feature,.view.active .stat{animation:cardEnter .5s .2s var(--motion-ease) backwards}
+.view.active .feature:nth-child(2),.view.active .stat:nth-child(2){animation-delay:.28s}
+.view.active .feature:nth-child(3){animation-delay:.36s}
+@keyframes cardEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.option{animation:optionEnter .38s var(--motion-ease) backwards}
+.option:nth-child(1){animation-delay:.1s}.option:nth-child(2){animation-delay:.15s}.option:nth-child(3){animation-delay:.2s}.option:nth-child(4){animation-delay:.25s}.option:nth-child(5){animation-delay:.3s}
+@keyframes optionEnter{from{opacity:0;transform:translateX(var(--dx,16px))}}
+.option:hover{transform:translateX(4px)}.option.selected{box-shadow:inset 4px 0 var(--red);transform:translateX(3px)}
+.track span{transition:width .45s var(--motion-ease)}
+.day-btn{transition:transform .18s var(--motion-ease),background-color .18s,color .18s}
+.day-btn:hover{transform:translateY(-2px) scale(1.04);border-color:var(--red)}
+.day-btn{animation:dayIn .42s var(--motion-ease) calc(var(--i,0)*14ms + .14s) backwards}
+@keyframes dayIn{from{opacity:0;transform:translateY(8px) scale(.9)}}
+.day-slogan.reveal{animation:sloganReveal .72s var(--motion-ease) backwards}
+@keyframes sloganReveal{0%{opacity:0;transform:translateY(18px);clip-path:inset(0 0 100% 0)}60%{opacity:1;clip-path:inset(0 0 0 0)}100%{transform:none;clip-path:inset(0 0 0 0)}}
+
+
+
+
+
+.bars .bar{animation:barIn .5s var(--motion-ease) both}
+.bars .bar:nth-child(2n){animation-delay:.025s}.bars .bar:nth-child(3n){animation-delay:.05s}
+@keyframes barIn{from{transform:scaleY(.2);transform-origin:bottom;opacity:.3}to{transform:scaleY(1);opacity:1}}
+.ticker{background-size:200% 100%;animation:tickerColor 8s ease-in-out infinite alternate}
+@keyframes tickerColor{from{background-color:#c93420}to{background-color:#e24a30}}
+@media(hover:hover){.poster:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:12px 12px 0 rgba(17,17,17,.12)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+
+
+
+
+
+
+/* VOLYA dark-paper theme override */
+:root{--paper:#111111;--ink:#EDE4D4;--red:#D83A24;--muted:#bdb5a7;--line:rgba(237,228,212,.28)}
+html,body{background:#111111!important;color:#EDE4D4!important}
+body{color:var(--ink)}
+header,.top,.panel,.feature,.stat,.card,.question-card,.journal-card,.progress-card,.result-card,.day-panel,.entry-panel,.section-card{background:#111111;color:#EDE4D4}
+input,textarea,select{background:#191919!important;color:#EDE4D4!important;border-color:rgba(237,228,212,.35)!important}
+input::placeholder,textarea::placeholder{color:#9c9589!important}
+button,.btn,.small-btn,.pill,.day-btn,.option{color:#EDE4D4}
+hr,.divider{border-color:rgba(237,228,212,.25)}
+.muted,.subtle,.eyebrow,.caption,.hint{color:#bdb5a7}
+.poster{background:#D83A24;color:#111111}
+.poster *{color:inherit}
+.intro-word{color:#EDE4D4}
+#brandIntro{background:#111111;color:#EDE4D4}
+.ticker{color:#EDE4D4}
+
+/* VOLYA transitions v2 */
+.nav a{position:relative}
+.nav a:after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--motion-ease)}
+.nav a:hover:after,.nav a[aria-current=page]:after{transform:scaleX(1)}
+[tabindex="-1"]:focus{outline:none}
+#veil{position:fixed;inset:0;z-index:15;visibility:hidden;pointer-events:none;background:#111111;transform:translate3d(0,100%,0);will-change:transform;display:flex;align-items:flex-end;padding:0 5vw 4vh}
+#veil:before,#veil:after{content:"";position:absolute;left:0;right:0;height:4px;background:var(--red)}
+#veil:before{top:0}
+#veil:after{bottom:0}
+.veil-label{font:900 clamp(34px,9vw,112px)/.9 Unbounded,sans-serif;letter-spacing:-.1em;text-transform:uppercase;color:#EDE4D4;max-width:100%;overflow-wrap:anywhere}
+.veil-label b{color:var(--red);font-weight:inherit}
+.result-reveal>*{animation:heroRise .6s var(--motion-ease) calc(var(--n,0)*90ms + 60ms) backwards}
+.result-reveal>.result-title{animation-name:titleCut;animation-duration:.85s}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .06em 0;margin:0 -.06em -.06em 0}
+.w>span{display:inline-block}
+.day-slogan.reveal .w>span{animation:wordUp .65s var(--motion-ease) calc(var(--i,0)*60ms + .28s) backwards}
+@keyframes wordUp{from{transform:translateY(105%)}}
+.day-slogan.reveal:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--red);z-index:2;transform-origin:left;animation:sloganLine 1.1s var(--motion-ease) both}
+@keyframes sloganLine{0%{transform:scaleX(0);opacity:1}55%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+.day-slogan.reveal:after{animation:ringIn 1s .3s var(--motion-ease) backwards}
+@keyframes ringIn{from{opacity:0;transform:scale(.55) rotate(-24deg)}}
+.day-slogan.reveal .slogan-note{animation:heroRise .6s var(--motion-ease) .9s backwards}
+
+/* читаемость: тёмный текст на светлых панелях */
+.day-list,.journal-main{color:#111111}
+.day-list-head,.field label,.field-label,.journal-main .day-title,.done-chip{color:#111111}
+.done-chip{border-color:#8a8174}
+.day-list-foot,.saved-note{color:#4a443c}
+.day-btn{color:#111111;border-color:#b8ad9c}
+.day-btn.active{background:#111111;color:#EDE4D4;border-color:#111111}
+.day-btn.done{background:var(--red);color:#ffffff;border-color:var(--red)}
+.journal-main .small-btn{color:#111111;border-color:#111111}
+.journal-main .small-btn:hover{background:#111111;color:#EDE4D4}
+.journal-main .small-btn:disabled{opacity:.4}
+.day-slogan{background:#111111;color:#EDE4D4}
+.day-slogan .slogan-note{color:#c4bdb2}
+.test-side p{color:#4a443c}
+.dark-section p{color:#4a443c}
+
+</style>
+</head>
+<body>
+
+<div id="brandIntro" aria-hidden="true"><div class="intro-word">ВОЛЯ<span>.</span></div><div class="intro-line"></div><div class="intro-caption">ВЫБИРАЙ САМ / 31 ДЕНЬ</div></div>
+<div id="veil" aria-hidden="true"><div class="veil-label" id="veilLabel"></div></div>
+<style>
+#brandIntro{position:fixed;inset:0;z-index:20;background:#111111;color:#ede4d4;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:17px;animation:introOut .7s 1.25s var(--motion-ease) forwards;pointer-events:none}
+.intro-word{font:900 clamp(58px,13vw,130px)/.9 Unbounded,sans-serif;letter-spacing:-.1em;animation:introWord .7s .12s var(--motion-ease) both}
+.intro-word span{color:#d83a24}.intro-line{height:3px;width:min(220px,50vw);background:#d83a24;transform-origin:left;animation:introLine .55s .42s var(--motion-ease) both}.intro-caption{font:800 9px Montserrat,sans-serif;letter-spacing:.22em;animation:introWord .5s .5s var(--motion-ease) both}
+@keyframes introWord{from{opacity:0;transform:translateY(15px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes introLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes introOut{to{opacity:0;visibility:hidden;transform:scale(1.02)}}
+@media(prefers-reduced-motion:reduce){#brandIntro{display:none}}
+</style>
+
+<header class="wrap top">
+<a class="logo" href="#" data-view="home">ВОЛЯ<b>.</b></a>
+<nav class="nav"><a href="#" data-view="test">Тест</a><a href="#" data-view="journal">Ежедневник</a><a href="#" data-view="progress">Прогресс</a></nav>
+<button class="pill" id="headerStart">Продолжить путь ↗</button>
+</header>
+<main>
+<section class="view active" id="view-home">
+<div class="wrap hero"><div><div class="eyebrow">31 день возвращения к себе</div><h1>ВОЛЯ<span>.</span></h1><div class="sub">Ты <mark>выбираешь</mark><br>сам.</div><p class="intro">Меньше автопилота. Меньше привычек, которые управляют тобой. Больше ясности, энергии и реальной жизни.</p><div class="actions"><button class="btn" data-view="test">Пройти тест <b>↗</b></button><button class="btn dark" data-view="journal">Открыть дневник <b>↗</b></button></div></div>
+<div class="poster"><div class="ptop"><span>Личная практика<br>01 — 31</span><span>Выбор / Контроль</span></div><div class="silhouette"></div><div class="ptitle">ВОЛЯ<span>ВЫБИРАЙ<br>САМ.</span></div><div class="pfoot"><span>Программа восстановления</span><span class="stamp">01 / 31</span></div></div></div>
+<div class="ticker">МЕНЬШЕ АВТОПИЛОТА　✳　БОЛЬШЕ РЕАЛЬНОЙ ЖИЗНИ　✳　ВЫБИРАЙ САМ　✳</div>
+<div class="wrap section"><div class="section-head"><div><div class="kicker">Не очередной челлендж</div><h2>Не запрет.<br>Новый выбор.</h2></div><p>Без обещаний стать идеальным за ночь. Только честное наблюдение, небольшие действия и движение вперёд — день за днём.</p></div><div class="feature-grid"><article class="feature"><div class="num">01 / ЗАМЕТИТЬ</div><div><h3>Увидеть сценарий</h3><p>Понять, что запускает автоматические действия и в какие моменты теряется выбор.</p></div></article><article class="feature"><div class="num">02 / ВЫБРАТЬ</div><div><h3>Вернуть контроль</h3><p>Поставить паузу между импульсом и действием — без самоунижения и чувства вины.</p></div></article><article class="feature"><div class="num">03 / СОБРАТЬ</div><div><h3>Создать опору</h3><p>Выстроить ежедневные действия, которые помогают вернуть ясность, энергию и время.</p></div></article></div></div>
+<div class="dark-section"><div class="wrap"><div class="kicker">Твой темп. Твой выбор.</div><h2>31 день.<br>Один день за раз.</h2><p>Пройди тест, выбери свой фокус и возвращайся к себе через короткую ежедневную запись. После каждого заполненного дня тебя ждёт лозунг дня.</p><button class="btn" data-view="journal">Начать дневник ↗</button></div></div>
+</section>
+<section class="view" id="view-test"><div class="wrap"><div class="page-head"><div><div class="kicker">Самонаблюдение / 01</div><h2>Твой сценарий.<br>Точка старта.</h2></div><p>10 вопросов о привычных реакциях, импульсах и способах менять поведение. Отвечай честно — здесь нет правильных или неправильных людей.</p></div>
+<div class="test-shell panel" style="padding:0"><aside class="test-side"><div><div class="big">ТЕСТ<br>01—10</div><p>Отвечай так, как бывает на самом деле — не так, как «правильно».</p></div><div class="kicker">ВОЛЯ / самонаблюдение</div></aside><div class="test-main" id="testMain"><div class="meta"><span id="qCount">ВОПРОС 01 / 10</span><span>БЕЗ ОЦЕНОК</span></div><div class="track"><span id="qProgress"></span></div><h3 class="question" id="qTitle"></h3><div class="options" id="qOptions"></div><div class="err" id="qError" aria-live="polite"></div><div class="controls"><button class="small-btn" id="qBack" type="button">← Назад</button><button class="small-btn primary" id="qNext" type="button">Далее ↗</button></div></div></div>
+<div style="padding:18px 0 65px"><button class="small-btn" data-view="home">← На главную</button></div></div></section>
+<section class="view" id="view-journal"><div class="wrap"><div class="page-head"><div><div class="kicker">31 день / практика</div><h2>Ежедневник<br>ВОЛЯ.</h2></div><p>Несколько минут честного внимания к себе. Записи сохраняются в этом браузере. После завершения дня откроется его лозунг — возвращайся к нему, когда понадобится опора.</p></div>
+<div class="overview"><div class="stat"><strong id="journalDone">0 / 31</strong><span>Заполнено дней</span></div><div class="stat"><strong id="journalPercent">0%</strong><span>Путь пройден</span></div></div>
+<div class="journal-layout"><aside class="day-list"><div class="day-list-head"><span>Выбери день</span><span id="daysCount">0/31</span></div><div class="day-grid" id="dayGrid"></div><div class="day-list-foot">Можно возвращаться к прошлым записям и редактировать их. Каждый завершённый день сохраняет свой лозунг.</div></aside>
+<div class="journal-main" id="journalMain">
+<div class="journal-daytop"><div><div class="day-label" id="dayLabel">ДЕНЬ 01 / 31</div><div class="day-title" id="dayTitle">Начни с честности.</div></div><div class="done-chip" id="dayStatus">ЕЩЁ НЕ ЗАПОЛНЕН</div></div>
+<div class="field"><label for="mood">Как ты себя сегодня чувствуешь?</label><select id="mood"><option value="">Выбери состояние</option><option>Спокойно</option><option>Энергично</option><option>Тревожно</option><option>Устал</option><option>Раздражён</option><option>Опустошён</option><option>Надеюсь на перемены</option></select></div>
+<div class="journal-grid2"><div class="field"><label for="energy">Уровень энергии (1–10)</label><div class="range-row"><input id="energy" type="range" min="1" max="10" value="5"><output id="energyOut">5</output></div></div><div class="field"><label for="focus">Главный фокус дня</label><select id="focus"><option value="">Выбери фокус</option><option>Алкоголь</option><option>Никотин</option><option>Другие вещества</option><option>Порно / мастурбация, если мешает моим целям</option><option>Сон и восстановление</option><option>Движение и тело</option><option>Эмоциональное состояние</option><option>Осознанность в целом</option></select></div></div>
+<div class="field"><label for="trigger">Что сегодня запускало автоматические реакции?</label><textarea id="trigger" placeholder="Ситуация, место, чувство, человек или мысль…"></textarea></div>
+<div class="field"><label for="choice">Какой выбор ты сделал сегодня — или хочешь сделать завтра?</label><textarea id="choice" placeholder="Даже маленький шаг имеет значение…"></textarea></div>
+<div class="field"><label for="noteText">Заметка себе</label><textarea id="noteText" placeholder="Что важно не забыть? Что помогло? Что попробуешь иначе?"></textarea></div>
+<div class="day-slogan" id="sloganBox" hidden><div class="slogan-kicker">Лозунг дня / сохраняй его</div><div class="slogan-text" id="sloganText"></div><div class="slogan-note" id="sloganNote"></div></div>
+<div class="journal-actions"><button class="small-btn" id="prevDay">← Предыдущий</button><span class="saved-note" id="saveState">Записи сохраняются на этом устройстве</span><button class="btn" id="completeDay">Завершить день ↗</button><button class="small-btn" id="nextDay">Следующий →</button></div>
+</div></div><div style="padding:22px 0 60px"><button class="small-btn" data-view="home">← На главную</button></div></div></section>
+<section class="view" id="view-progress"><div class="wrap"><div class="page-head"><div><div class="kicker">Путь / обзор</div><h2>Твой прогресс.</h2></div><p>Не оценивай себя только по идеальным дням. Возвращение к выбранному пути — тоже часть практики.</p></div><div class="overview"><div class="stat"><strong id="progDone">0 / 31</strong><span>Завершено дней</span></div><div class="stat"><strong id="progPct">0%</strong><span>Прогресс программы</span></div></div><div class="panel"><div class="kicker">Твой результат теста</div><h3 id="profileTitle" class="result-title">Тест ещё не пройден</h3><p id="profileDesc" class="result-copy">Пройди тест, чтобы увидеть ориентир для самонаблюдения и получить отправную точку.</p><button class="btn" data-view="test">Пройти тест ↗</button></div><div class="panel"><div class="kicker">Лозунги, которые ты уже открыл</div><div id="sloganHistory" class="feature-grid"></div></div><div style="padding-bottom:60px"><button class="small-btn" id="resetAll">Сбросить локальные данные</button><p class="note">Сброс удалит тест, записи дневника и прогресс только в этом браузере. Это действие нельзя отменить.</p></div></div></section>
+</main><footer class="wrap foot"><span>ВОЛЯ © 2026</span><span>Меньше автопилота. Больше жизни.</span><span>31-дневная практика</span></footer>
+<script>
+(()=>{
+const KEY='volya_app_v1';
+const slogans=[
+["ТЫ НЕ ОБЯЗАН ВЕРИТЬ КАЖДОМУ СВОЕМУ ИМПУЛЬСУ.","Импульс — сигнал, а не приказ."],
+["ПАУЗА — ЭТО ТОЖЕ ВЫБОР.","Перед привычным действием попробуй остановиться на один спокойный вдох."],
+["НЕ НУЖНО СТАТЬ ДРУГИМ. НУЖНО ВЕРНУТЬСЯ К СЕБЕ.","Сегодня достаточно одного решения, которое совпадает с твоими ценностями."],
+["ТВОЁ ВНИМАНИЕ — ТВОЯ СИЛА.","Заметь, куда уходит внимание, и мягко верни его к тому, что важно."],
+["ЧУВСТВО НЕ ДОЛЖНО РЕШАТЬ ЗА ТЕБЯ.","Можно испытывать тревогу, скуку или злость и всё равно выбрать свой следующий шаг."],
+["НЕ ИДЕАЛЬНО. ОСОЗНАННО.","Прогресс — не безошибочность, а способность замечать и продолжать."],
+["ТЫ МОЖЕШЬ ИЗМЕНИТЬ СЛЕДУЮЩИЕ ПЯТЬ МИНУТ.","Не решай за всю жизнь сразу. Выбери один ближайший шаг."],
+["ПРИВЫЧКА — ЭТО СЦЕНАРИЙ, А НЕ ТВОЯ ЛИЧНОСТЬ.","То, что повторялось раньше, не обязано определять следующий выбор."],
+["НЕ НАКАЗЫВАЙ СЕБЯ. ИЗУЧАЙ СЕБЯ.","Любопытство помогает понять причину там, где самокритика только усиливает напряжение."],
+["СВОБОДА НАЧИНАЕТСЯ С ЧЕСТНОСТИ.","Назови происходящее прямо — без оправданий и без унижения себя."],
+["МАЛЕНЬКИЙ ШАГ ЛУЧШЕ ГРОМКОГО ОБЕЩАНИЯ.","Сделай перемену достаточно небольшой, чтобы повторить её завтра."],
+["ТЫ НЕ СЛАБЫЙ. ТЫ УЧИШЬСЯ НОВОМУ ОТВЕТУ.","Новый способ реагировать требует практики, а не стыда."],
+["НЕ ВСЁ, ЧТО ДАЁТ ОБЛЕГЧЕНИЕ, ДАЁТ ВОССТАНОВЛЕНИЕ.","Замечай разницу между мгновенным уходом от чувства и заботой о себе."],
+["ВЕРНИ СЕБЕ ОДИН ВЫБОР ЗА РАЗ.","Сегодня не обязательно менять всё. Достаточно увидеть одну точку, где ты можешь выбрать."],
+["ТВОЯ ЭНЕРГИЯ НУЖДАЕТСЯ В НАПРАВЛЕНИИ.","Подумай, чему ты хочешь дать время, которое раньше уходило автоматически."],
+["НЕ ПУТАЙ СРЫВ С КОНЦОМ ПУТИ.","Один эпизод не отменяет твоих наблюдений и следующего решения."],
+["ТЫ МОЖЕШЬ ЧУВСТВОВАТЬ ДИСКОМФОРТ И НЕ УБЕГАТЬ ОТ НЕГО.","Попробуй дать эмоции имя и немного пространства, прежде чем действовать."],
+["СИСТЕМА СИЛЬНЕЕ ОДНОГО ПОРЫВА.","Убери один триггер, подготовь альтернативу или попроси поддержки."],
+["СЕГОДНЯШНИЙ ВЫБОР — ЭТО ТВОЯ ПРАКТИКА.","Не жди идеального настроения, чтобы сделать маленькое полезное действие."],
+["ТВОЁ ТЕЛО — НЕ ПРОЕКТ ДЛЯ НАКАЗАНИЯ.","Сон, вода, движение и отдых — это поддержка, а не плата за ошибки."],
+["ЗАМЕТИТЬ — УЖЕ НЕ ТО ЖЕ САМОЕ, ЧТО ДЕЙСТВОВАТЬ АВТОМАТИЧЕСКИ.","Осознанность создаёт небольшое пространство для нового решения."],
+["ТЫ НЕ ДОЛЖЕН ДОКАЗЫВАТЬ СВОЮ ЦЕННОСТЬ СОВЕРШЕНСТВОМ.","Относись к себе с той же честностью и заботой, которую хотел бы дать близкому."],
+["ЗАМЕНИ ПУСТОТУ ДЕЙСТВИЕМ, КОТОРОЕ ТЕБЕ ВАЖНО.","Выбери занятие, контакт или отдых, который действительно поддерживает тебя."],
+["СВОБОДА — ЭТО ВОЗМОЖНОСТЬ ВЫБИРАТЬ, А НЕ ЗАПРЕЩАТЬ СЕБЕ ВСЁ.","Строй правила вокруг своих целей, а не вокруг чувства вины."],
+["ТЫ МОЖЕШЬ НАЧАТЬ СНОВА БЕЗ ТОРЖЕСТВЕННОГО ОБЕЩАНИЯ.","Следующий шаг не требует идеального понедельника."],
+["НЕ ОТДАВАЙ ВЕСЬ ДЕНЬ ОДНОМУ ТРУДНОМУ МОМЕНТУ.","Что ещё сегодня было важным, живым или хорошим?" ],
+["УСТОЙЧИВОСТЬ — ЭТО ВОЗВРАЩАТЬСЯ.","Если отвлёкся от курса, замечай это и спокойно возвращайся к следующему действию."],
+["НЕ СПРАШИВАЙ ТОЛЬКО «ЧЕГО Я ХОЧУ СЕЙЧАС?»","Спроси ещё: «Что поможет мне чувствовать себя завтра?»"],
+["ТЫ МОЖЕШЬ ПОПРОСИТЬ ПОДДЕРЖКУ И ОСТАТЬСЯ АВТОРОМ СВОЕЙ ЖИЗНИ.","Самостоятельность не означает, что всё нужно выдерживать в одиночку."],
+["ТВОЯ ЖИЗНЬ БОЛЬШЕ ОДНОЙ ПРИВЫЧКИ.","Наполняй её отношениями, движением, творчеством, отдыхом и делами, которые имеют для тебя смысл."],
+["НЕ ИДЕАЛЬНО. НЕ НА АВТОПИЛОТЕ. ПО-СВОЕМУ.","Продолжай выбирать то, что помогает тебе жить ближе к собственным ценностям."]
+];
+const questions=[
+{q:"Когда мне плохо, скучно или тревожно, я обычно…",a:[["Стараюсь не чувствовать это и переключаюсь на что-нибудь.","escape"],["Автоматически делаю привычное, почти не замечая.","auto"],["Ищу что-то яркое, чтобы встряхнуться.","thrill"],["Злюсь на себя и пытаюсь всё жёстко запретить.","control"],["Пытаюсь понять, что происходит, и выбрать действие.","author"]]},
+{q:"Как часто ты повторяешь то, от чего хотел отказаться?",a:[["Чаще всего — когда тяжело эмоционально.","escape"],["Регулярно: рука сама тянется, даже без явного желания.","auto"],["Периодами: резко останавливаюсь, потом возвращаюсь.","thrill"],["Срывы особенно задевают, потому что требую от себя идеала.","control"],["Замечаю закономерности и постепенно меняю условия.","author"]]},
+{q:"Ты решил начать новую жизнь с понедельника. Что обычно происходит?",a:[["План отвлекает от того, что беспокоит, но ненадолго.","escape"],["Через несколько дней всё возвращается на автопилоте.","auto"],["Стартую мощно, но быстро теряю интерес.","thrill"],["Ставлю жёсткие правила и виню себя, если нарушаю.","control"],["Начинаю с небольших шагов и закрепляю их.","author"]]},
+{q:"Что чаще всего запускает старую привычку?",a:[["Тревога, одиночество, грусть или напряжение.","escape"],["Время, место и знакомый ритуал.","auto"],["Скука и желание новых ощущений.","thrill"],["Стресс из-за ожиданий и самокритики.","control"],["Я учусь замечать триггеры и менять ситуацию.","author"]]},
+{q:"Когда тянет к мастурбации или порно, что чаще всего происходит?",a:[["Хочется заглушить скуку, одиночество или чувства.","escape"],["Делаю это по привычке, иногда даже не особо хочу.","auto"],["Решаю сократить, но возвращаюсь к этому волнами.","thrill"],["Потом испытываю сильную вину и злюсь на себя.","control"],["Сам выбираю, когда это делать, и это не мешает жизни.","neutral"]]},
+{q:"Бывает ли, что порно или мастурбация мешают сну, делам или общению?",a:[["Почти никогда — заметных проблем нет.","neutral"],["Иногда, особенно когда скучно или тяжело.","escape"],["Да, это регулярно сбивает мои планы.","auto"],["Часто чувствую, что теряю контроль над этим.","thrill"],["Сильнее всего мучает вина, даже если жизнь не страдает.","control"]]},
+{q:"Если снова сделал то, от чего хотел отказаться, ты…",a:[["Пытаюсь забыть об этом и не думать.","escape"],["Понимаю, что произошло, но продолжаю по инерции.","auto"],["Решаю начать заново с ещё большим размахом.","thrill"],["Ругаю себя и считаю, что всё испортил.","control"],["Разбираю причины и корректирую план.","author"]]},
+{q:"Как ты относишься к людям, которые живут здоровее тебя?",a:[["Думаю, у них просто меньше проблем.","escape"],["Сравниваю себя, но продолжаю жить как раньше.","auto"],["Вдохновляюсь, резко меняюсь, потом остываю.","thrill"],["Чувствую себя хуже и начинаю критиковать себя.","control"],["Беру подходящие идеи и подстраиваю под себя.","author"]]},
+{q:"Что больше всего мешает переменам?",a:[["Не хочется сталкиваться с неприятными чувствами.","escape"],["Привычные действия включаются раньше мысли.","auto"],["Быстро становится скучно, хочется нового импульса.","thrill"],["Требую идеального результата и тяжело переживаю ошибки.","control"],["Мне нужна понятная система и устойчивый план.","author"]]},
+{q:"Чего тебе сейчас больше всего хочется?",a:[["Почувствовать облегчение и перестать убегать от себя.","escape"],["Выйти из автоматического режима и вернуть время.","auto"],["Вернуть интерес и направить энергию в дело.","thrill"],["Перестать жить под давлением вины.","control"],["Стать автором решений и выстроить устойчивый ритм.","author"]]}
+];
+const profiles={
+escape:{name:"БЕГЛЕЦ",desc:"Похоже, привычки иногда становятся способом не встречаться с неприятными чувствами. Точка старта — не ругать себя за импульс, а научиться замечать чувство и находить другой способ справиться."},
+auto:{name:"АВТОПИЛОТ",desc:"Похоже, многое запускается по привычному сценарию ещё до осознанного решения. Начни с наблюдения за временем, местом и триггерами, затем измени один маленький элемент рутины."},
+thrill:{name:"ИСКАТЕЛЬ ОЩУЩЕНИЙ",desc:"Тебе может быть легче начать с мощного импульса, чем поддерживать спокойный ритм. Точка роста — не ждать мотивации, а создать короткие действия, которые дают интерес и движение без крайностей."},
+control:{name:"ВНУТРЕННИЙ КРИТИК",desc:"Похоже, ты можешь требовать от себя жёсткого контроля и болезненно переживать ошибки. Устойчивость строится не на идеальности: оценивай прогресс по возвращению к выбранному пути, а не по отсутствию промахов."},
+author:{name:"АВТОР СВОЕЙ ЖИЗНИ",desc:"Ты склонен искать осознанные решения и строить систему, а не полагаться только на импульс. Следующий шаг — превратить понимание в простые повторяемые действия и проверять, что действительно помогает."}
+};
+const $=id=>document.getElementById(id);
+let state=load(),qIndex=0,qAnswers=state.testAnswers||Array(10).fill(null),currentDay=state.currentDay||1;
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{entries:{},testAnswers:null,profile:null,currentDay:1}}catch(e){return {entries:{},testAnswers:null,profile:null,currentDay:1}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+const EASE='cubic-bezier(.2,.75,.2,1)',EASE_IO='cubic-bezier(.7,0,.2,1)';
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const canAnimate=()=>!reduceMotion.matches&&typeof Element.prototype.animate==='function';
+const clearAnims=el=>{if(el&&el.getAnimations)el.getAnimations().forEach(a=>a.cancel())};
+const VIEW_LABELS={home:'ВОЛЯ',test:'Тест',journal:'Ежедневник',progress:'Прогресс'};
+let navBusy=false,navQueue=null;
+function refreshView(name){if(name==='journal')renderJournal();if(name==='progress')renderProgress()}
+function mountView(name){
+const target=$('view-'+name);
+document.querySelectorAll('.view.active').forEach(v=>v.classList.remove('active'));
+target.classList.add('active');
+refreshView(name);
+document.querySelectorAll('.nav a').forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+const root=document.documentElement;root.style.scrollBehavior='auto';window.scrollTo(0,0);root.style.scrollBehavior='';
+const h=target.querySelector('h1,h2');
+if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
+}
+function showView(name){
+const target=$('view-'+name);if(!target)return;
+if(navBusy){navQueue=name;return}
+const current=document.querySelector('.view.active');
+if(current===target){refreshView(name);return}
+const veil=$('veil');
+if(!canAnimate()||!veil){mountView(name);return}
+navBusy=true;
+$('veilLabel').innerHTML=VIEW_LABELS[name]+'<b>.</b>';
+veil.style.visibility='visible';
+clearAnims(veil);
+veil.animate([{transform:'translate3d(0,100%,0)'},{transform:'translate3d(0,0,0)'}],{duration:300,easing:EASE_IO,fill:'forwards'}).finished
+.then(()=>{mountView(name);return veil.animate([{transform:'translate3d(0,0,0)'},{transform:'translate3d(0,-100%,0)'}],{duration:460,delay:60,easing:EASE_IO,fill:'forwards'}).finished})
+.catch(err=>{console.error(err);try{mountView(name)}catch(e){}})
+.then(()=>{clearAnims(veil);veil.style.visibility='hidden';navBusy=false;if(navQueue){const n=navQueue;navQueue=null;showView(n)}});
+}
+if(reduceMotion.matches)document.body.classList.add('ready');else setTimeout(()=>document.body.classList.add('ready'),1100);
+document.querySelectorAll('[data-view]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();showView(el.dataset.view)}));
+$('headerStart').addEventListener('click',()=>showView(state.profile?'journal':'test'));
+const QUIZ_HTML=$('testMain').innerHTML;
+let qTok=0,finishing=false;
+function swapMain(el,mount,fadeIn){
+if(!canAnimate()){mount();return}
+clearAnims(el);
+const a=el.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(-10px)'}],{duration:150,easing:'ease-in',fill:'forwards'});
+a.finished.then(()=>{mount();a.cancel();if(fadeIn)el.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{duration:380,easing:EASE})}).catch(()=>{});
+}
+function buildQuestion(dir){
+const q=questions[qIndex],box=$('qOptions'),title=$('qTitle');
+clearAnims(title);clearAnims(box);
+$('qCount').textContent=`ВОПРОС ${String(qIndex+1).padStart(2,'0')} / 10`;
+$('qProgress').style.width=((qIndex+1)*10)+'%';
+title.textContent=q.q;
+box.innerHTML='';
+box.style.setProperty('--dx',dir<0?'-16px':'16px');
+q.a.forEach((item,i)=>{
+const lab=document.createElement('label');lab.className='option'+(qAnswers[qIndex]===i?' selected':'');
+const inp=document.createElement('input');inp.type='radio';inp.name='answer';inp.checked=qAnswers[qIndex]===i;
+inp.addEventListener('change',()=>selectAnswer(i));
+const span=document.createElement('span');span.textContent=item[0];
+lab.append(inp,span);box.append(lab);
+});
+$('qBack').disabled=qIndex===0;
+$('qNext').textContent=qIndex===9?'Узнать результат ↗':'Далее ↗';
+$('qError').textContent='';
+if(dir&&canAnimate())title.animate([{opacity:0,transform:`translateX(${dir<0?-26:26}px)`},{opacity:1,transform:'none'}],{duration:360,easing:EASE});
+}
+function renderQuestion(){buildQuestion(0)}
+function selectAnswer(i){
+qAnswers[qIndex]=i;
+$('qOptions').querySelectorAll('.option').forEach((lab,k)=>{lab.classList.toggle('selected',k===i);lab.querySelector('input').checked=(k===i)});
+$('qError').textContent='';
+}
+function stepQuestion(delta){
+qIndex+=delta;
+const tok=++qTok,t=$('qTitle'),o=$('qOptions');
+if(!canAnimate()){buildQuestion(delta);return}
+clearAnims(t);clearAnims(o);
+const kf=[{opacity:1,transform:'none'},{opacity:0,transform:`translateX(${delta>0?-22:22}px)`}],opt={duration:130,easing:'ease-in',fill:'forwards'};
+const a=t.animate(kf,opt);o.animate(kf,opt);
+a.finished.then(()=>{if(tok===qTok)buildQuestion(delta)}).catch(()=>{});
+}
+function nudge(){if(canAnimate())$('qOptions').animate([{transform:'translateX(0)'},{transform:'translateX(-7px)'},{transform:'translateX(6px)'},{transform:'translateX(-3px)'},{transform:'translateX(0)'}],{duration:300,easing:'ease-out'})}
+function onBack(){if(qIndex>0)stepQuestion(-1)}
+function onNext(){
+if(qAnswers[qIndex]===null){$('qError').textContent='Выбери вариант, который ближе тебе.';nudge();return}
+if(qIndex<9)stepQuestion(1);else finishTest();
+}
+function bindQuiz(){$('qBack').onclick=onBack;$('qNext').onclick=onNext}
+bindQuiz();
+function finishTest(){
+if(finishing)return;finishing=true;
+let score={escape:0,auto:0,thrill:0,control:0,author:0};
+qAnswers.forEach((ans,i)=>{let key=questions[i].a[ans][1];if(key!=='neutral')score[key]++});
+let winner=Object.keys(score).sort((a,b)=>score[b]-score[a])[0];
+state.testAnswers=qAnswers.slice();state.profile=winner;save();
+const html=`<div class="result-label" style="--n:0">ТВОЯ ТОЧКА СТАРТА</div><h3 class="result-title" style="--n:1">${profiles[winner].name}</h3><p class="result-copy" style="--n:2">${profiles[winner].desc}</p><div class="note" style="--n:3">Это ориентир для самонаблюдения, а не диагноз и не фиксированный тип личности. Мастурбация сама по себе не является проблемой; важно, мешает ли поведение твоей жизни и совпадает ли оно с твоими целями.</div><div class="controls" style="--n:4"><button class="small-btn" id="retake" type="button">Пройти ещё раз ↺</button><button class="btn" id="toJournal" type="button">Открыть дневник ↗</button></div>`;
+swapMain($('testMain'),()=>{const m=$('testMain');m.innerHTML=html;m.classList.add('result-reveal');$('retake').onclick=retake;$('toJournal').onclick=()=>showView('journal');finishing=false},false);
+}
+function retake(){
+qIndex=0;qAnswers=Array(10).fill(null);
+swapMain($('testMain'),()=>{const m=$('testMain');m.classList.remove('result-reveal');m.innerHTML=QUIZ_HTML;bindQuiz();buildQuestion(0)},true);
+}
+function getEntry(day){return state.entries[day]||{mood:'',energy:5,focus:'',trigger:'',choice:'',note:'',done:false,slogan:null}}
+function renderDayGrid(){
+const grid=$('dayGrid');
+if(grid.children.length!==31){
+grid.innerHTML='';
+for(let i=1;i<=31;i++){const b=document.createElement('button');b.type='button';b.className='day-btn';b.style.setProperty('--i',i-1);b.textContent=String(i).padStart(2,'0');b.addEventListener('click',()=>switchDay(i));grid.append(b)}
+}
+Array.from(grid.children).forEach((b,k)=>{const i=k+1,done=getEntry(i).done;b.classList.toggle('active',i===currentDay);b.classList.toggle('done',done);b.title=`День ${i}${done?' — завершён':''}`;b.setAttribute('aria-label',`День ${i}${done?', завершён':''}`)});
+}
+function switchDay(i){
+if(i===currentDay)return;
+saveCurrentFields();
+const dir=i>currentDay?1:-1;
+currentDay=i;state.currentDay=i;save();renderJournal(dir);
+}
+function saveCurrentFields(){if(!$('mood'))return;let old=getEntry(currentDay);state.entries[currentDay]={...old,mood:$('mood').value,energy:Number($('energy').value),focus:$('focus').value,trigger:$('trigger').value,choice:$('choice').value,note:$('noteText').value};save()}
+function setSlogan(text){
+const el=$('sloganText');el.textContent='';
+const words=text.split(' ').filter(Boolean);
+words.forEach((w,i)=>{const s=document.createElement('span');s.className='w';s.style.setProperty('--i',i);const t=document.createElement('span');t.textContent=w;s.append(t);el.append(s);if(i<words.length-1)el.append(' ')});
+}
+function animateDay(dir){
+if(!canAnimate())return;
+Array.from($('journalMain').children).filter(el=>!el.hidden).forEach((el,i)=>{
+clearAnims(el);
+el.animate([{opacity:0,transform:`translateX(${dir*22}px)`},{opacity:1,transform:'none'}],{duration:360,delay:Math.min(i*35,210),easing:EASE,fill:'backwards'});
+});
+}
+function renderJournal(dir){renderDayGrid();let e=getEntry(currentDay);$('dayLabel').textContent=`ДЕНЬ ${String(currentDay).padStart(2,'0')} / 31`;$('dayTitle').textContent=dayTitles[currentDay-1];$('dayStatus').textContent=e.done?'ДЕНЬ ЗАВЕРШЁН':'ЕЩЁ НЕ ЗАПОЛНЕН';$('mood').value=e.mood||'';$('energy').value=e.energy||5;$('energyOut').textContent=$('energy').value;$('focus').value=e.focus||'';$('trigger').value=e.trigger||'';$('choice').value=e.choice||'';$('noteText').value=e.note||'';$('completeDay').textContent=e.done?'Обновить запись ↗':'Завершить день ↗';$('saveState').textContent='Сохраняется на этом устройстве';$('prevDay').disabled=currentDay===1;$('nextDay').disabled=currentDay===31;$('sloganBox').hidden=!e.done;setSlogan(e.done?(e.slogan||slogans[currentDay-1][0]):'');$('sloganNote').textContent=e.done?slogans[currentDay-1][1]:'';updateStats();if(dir)animateDay(dir)}
+let revealT=0;
+function playReveal(){
+const sb=$('sloganBox');
+clearTimeout(revealT);sb.classList.remove('reveal');void sb.offsetWidth;
+if(canAnimate())sb.classList.add('reveal');
+revealT=setTimeout(()=>sb.classList.remove('reveal'),2400);
+sb.scrollIntoView({behavior:canAnimate()?'smooth':'auto',block:'center'});
+}
+function pulseDay(){
+const b=$('dayGrid').children[currentDay-1];
+if(b&&canAnimate())b.animate([{transform:'scale(.7)'},{transform:'scale(1.14)',offset:.6},{transform:'scale(1)'}],{duration:520,easing:EASE});
+}
+const dayTitles=["Начни с честности.","Заметь импульс.","Найди свою паузу.","Что запускает сценарий?","Выбор вместо реакции.","Поговори с собой иначе.","Пересмотри правила.","Увидь свой ритм.","Освободи внимание.","Назови, что важно.","Маленький шаг.","Создай альтернативу.","Убери один триггер.","Поддержи тело.","Верни себе время.","Без идеальности.","Дай эмоции имя.","Сделай среду союзником.","Отметь, что работает.","Выбери восстановление.","Заметь свои победы.","Попроси поддержку.","Создай устойчивый ритуал.","Проверь свои ожидания.","Вернись после трудного дня.","Выбери реальную жизнь.","Укрепи новую опору.","Что изменилось?","Собери свой план.","Закрепи свой выбор.","Продолжай по-своему."];
+['mood','energy','focus','trigger','choice','noteText'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='energy')$('energyOut').textContent=$('energy').value;saveCurrentFields();$('saveState').textContent='Черновик сохранён'}));
+$('completeDay').addEventListener('click',()=>{
+saveCurrentFields();let e=getEntry(currentDay);
+if(!e.mood&&!e.trigger.trim()&&!e.choice.trim()&&!e.note.trim()){if(!confirm('Запись почти пустая. Всё равно завершить этот день?'))return}
+const first=!e.done;
+e.done=true;e.slogan=slogans[currentDay-1][0];state.entries[currentDay]=e;save();
+renderJournal();
+if(first){playReveal();pulseDay()}else{$('saveState').textContent='Запись обновлена'}
+});
+$('prevDay').addEventListener('click',()=>{if(currentDay>1)switchDay(currentDay-1)});
+$('nextDay').addEventListener('click',()=>{if(currentDay<31)switchDay(currentDay+1)});
+function updateStats(){let done=Object.values(state.entries).filter(e=>e.done).length;let pct=Math.round(done/31*100);['journalDone','progDone'].forEach(id=>$(id).textContent=`${done} / 31`);['journalPercent','progPct'].forEach(id=>$(id).textContent=pct+'%');$('daysCount').textContent=`${done}/31`}
+function renderProgress(){updateStats();let title=$('profileTitle'),desc=$('profileDesc');if(state.profile&&profiles[state.profile]){title.textContent=profiles[state.profile].name;desc.textContent=profiles[state.profile].desc}else{title.textContent='Тест ещё не пройден';desc.textContent='Пройди тест, чтобы увидеть ориентир для самонаблюдения и получить отправную точку.'}let hist=$('sloganHistory');hist.innerHTML='';let entries=Object.entries(state.entries).filter(([d,e])=>e.done).sort((a,b)=>Number(a[0])-Number(b[0]));if(!entries.length){hist.innerHTML='<p class="result-copy">Заверши первый день — здесь появится история открытых лозунгов.</p>';return}entries.forEach(([d,e])=>{let art=document.createElement('article');art.className='feature';art.innerHTML=`<div class="num">ДЕНЬ ${String(d).padStart(2,'0')}</div><div><h3 style="font-size:17px">${e.slogan||slogans[Number(d)-1][0]}</h3><p>${slogans[Number(d)-1][1]}</p></div>`;art.style.cursor='pointer';art.onclick=()=>{currentDay=Number(d);state.currentDay=currentDay;save();showView('journal')};hist.append(art)})}
+$('resetAll').addEventListener('click',()=>{if(confirm('Точно удалить тест, все записи и прогресс с этого устройства?')){localStorage.removeItem(KEY);state={entries:{},testAnswers:null,profile:null,currentDay:1};qIndex=0;qAnswers=Array(10).fill(null);location.reload()}});
+$('energy').addEventListener('input',()=> $('energyOut').textContent=$('energy').value);
+renderQuestion();renderJournal();updateStats();
+})();
+</script>
+</body></html>
