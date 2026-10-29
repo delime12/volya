@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ede4d4"><title>ВОЛЯ — возвращение к себе</title>
+<meta name="theme-color" content="#111111"><title>ВОЛЯ — возвращение к себе</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -131,6 +131,79 @@ hr,.divider{border-color:rgba(237,228,212,.25)}
 .test-side p{color:#4a443c}
 .dark-section p{color:#4a443c}
 
+
+/* Аудит: контраст, доступность, мобильная навигация */
+:root{color-scheme:dark;--motion-ease:cubic-bezier(.2,.75,.2,1)}
+html{background:#111;scroll-padding-top:18px}
+body{background:#111;color:#EDE4D4;padding-bottom:0}
+.intro,.section-head p,.page-head p,.feature p,.foot,.note{color:#bdb5a7}
+.test-side p,.dark-section p{color:#c4bdb2}
+.option,.option:hover,.option.selected{color:#EDE4D4}
+.option:hover,.option.selected{background:#24211d;border-color:#EDE4D4}
+.option input{accent-color:#D83A24;min-width:16px;min-height:16px}
+.btn,.small-btn,.pill,.day-btn{min-height:44px}
+.field textarea,.field select{color:#111;background:#fbf5eb;border-color:#8a8174}
+.field textarea::placeholder{color:#655e54}
+.field textarea:focus-visible,.field select:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #D83A24;outline-offset:3px}
+.mobile-nav{display:none}
+@media(max-width:800px){
+  .mobile-nav{position:fixed;z-index:12;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:6px;background:rgba(17,17,17,.96);border:1px solid rgba(237,228,212,.28);backdrop-filter:blur(12px);border-radius:14px;box-shadow:0 8px 28px #0008}
+  .mobile-nav button{border:0;border-radius:9px;background:transparent;color:#EDE4D4;padding:10px 3px;min-height:42px;font:800 10px Montserrat,sans-serif;letter-spacing:.01em;white-space:nowrap}
+  .mobile-nav button[aria-current="page"]{background:#D83A24;color:#fff}
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .top{gap:8px}.pill{padding:10px 11px;font-size:9px;max-width:55%;white-space:normal}
+  .day-grid{grid-template-columns:repeat(7,minmax(0,1fr))}
+  .day-btn{min-width:0;padding:0;min-height:38px}
+  .journal-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .journal-actions .saved-note{grid-column:1/-1;grid-row:1;width:auto;order:0}
+  .journal-actions button{width:100%;min-width:0;padding:12px 8px}
+  .journal-daytop{gap:10px}.done-chip{white-space:normal}
+  .test-main{min-width:0}.question{overflow-wrap:anywhere}
+}
+@media(max-width:360px){.wrap{padding-left:14px;padding-right:14px}.logo{font-size:17px}.pill{font-size:8px;letter-spacing:.04em}.mobile-nav button{font-size:9px}.day-grid{gap:4px}.day-btn{font-size:9px}.controls{gap:8px}.small-btn,.btn{padding:12px 9px;font-size:9px;letter-spacing:.04em}}
+@media(prefers-reduced-motion:reduce){body,.view.active,.view.active .page-head,.view.active .section-head,.view.active .feature,.view.active .stat,.option,.day-btn,.day-slogan.reveal{animation:none!important} .poster:before,.poster:after,.ticker{animation:none!important}}
+
+
+/* VOLYA mobile safe-area and horizontal breathing room patch */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+*, *::before, *::after { box-sizing: border-box; }
+img, video, canvas, svg { max-width: 100%; }
+.wrap, .view, .view > *, .section-head, .page-head,
+.feature-grid, .feature, .hero, .poster, .test-shell,
+.test-main, .journal-layout, .journal-main, .panel {
+  min-width: 0;
+  max-width: 100%;
+}
+@media (max-width: 800px) {
+  /* .section's padding shorthand previously overrode .wrap's side gutters */
+  .wrap { width: 100%; padding-left: 22px !important; padding-right: 22px !important; }
+  .wrap.section { padding-left: 22px !important; padding-right: 22px !important; }
+  .hero { width: 100%; }
+  .hero h1 { font-size: clamp(64px, 18vw, 100px); letter-spacing: -.085em; overflow-wrap: anywhere; }
+  h2 { font-size: clamp(30px, 8.4vw, 42px); overflow-wrap: anywhere; }
+  .sub { font-size: clamp(21px, 5.8vw, 29px); overflow-wrap: anywhere; }
+  .intro, .section-head p, .page-head p, .feature p, .dark-section p {
+    overflow-wrap: anywhere;
+  }
+  .poster { padding: 20px; min-height: 360px; }
+  .ptitle { max-width: 100%; font-size: clamp(36px, 9.5vw, 58px); letter-spacing: -.085em; overflow-wrap: anywhere; }
+  .ptitle span { font-size: 1em; }
+  .ticker { max-width: 100%; }
+  .feature-grid { grid-template-columns: minmax(0, 1fr); }
+  .feature { padding: 20px; }
+  .test-shell, .test-main, .journal-main, .panel { width: 100%; }
+  .mobile-nav { left: 12px; right: 12px; }
+}
+@media (max-width: 380px) {
+  .wrap, .wrap.section { padding-left: 18px !important; padding-right: 18px !important; }
+  .hero h1 { font-size: clamp(58px, 17vw, 78px); }
+  .ptitle { font-size: clamp(32px, 9vw, 42px); }
+}
+
 </style>
 </head>
 <body>
@@ -152,11 +225,17 @@ hr,.divider{border-color:rgba(237,228,212,.25)}
 <nav class="nav"><a href="#" data-view="test">Тест</a><a href="#" data-view="journal">Ежедневник</a><a href="#" data-view="progress">Прогресс</a></nav>
 <button class="pill" id="headerStart">Продолжить путь ↗</button>
 </header>
+<nav class="mobile-nav" aria-label="Основная навигация">
+<button type="button" data-view="home" aria-label="Главная" aria-current="page">Главная</button>
+<button type="button" data-view="test" aria-label="Тест">Тест</button>
+<button type="button" data-view="journal" aria-label="Ежедневник">Дневник</button>
+<button type="button" data-view="progress" aria-label="Прогресс">Прогресс</button>
+</nav>
 <main>
 <section class="view active" id="view-home">
-<div class="wrap hero"><div><div class="eyebrow">31 день возвращения к себе</div><h1>ВОЛЯ<span>.</span></h1><div class="sub">Ты <mark>выбираешь</mark><br>сам.</div><p class="intro">Меньше автопилота. Меньше привычек, которые управляют тобой. Больше ясности, энергии и реальной жизни.</p><div class="actions"><button class="btn" data-view="test">Пройти тест <b>↗</b></button><button class="btn dark" data-view="journal">Открыть дневник <b>↗</b></button></div></div>
+<div class="wrap hero"><div><div class="eyebrow">31 день возвращения к себе</div><h1>ВОЛЯ<span>.</span></h1><div class="sub">Ты <mark>выбираешь</mark><br>сам.</div><p class="intro">Меньше автопилота. Меньше привычек, которые управляют тобой. Больше ясности, энергии и реальной жизни.</p><div class="actions"><button class="btn" data-view="test">Пройти тест</button><button class="btn dark" data-view="journal">Открыть дневник</button></div></div>
 <div class="poster"><div class="ptop"><span>Личная практика<br>01 — 31</span><span>Выбор / Контроль</span></div><div class="silhouette"></div><div class="ptitle">ВОЛЯ<span>ВЫБИРАЙ<br>САМ.</span></div><div class="pfoot"><span>Программа восстановления</span><span class="stamp">01 / 31</span></div></div></div>
-<div class="ticker">МЕНЬШЕ АВТОПИЛОТА　✳　БОЛЬШЕ РЕАЛЬНОЙ ЖИЗНИ　✳　ВЫБИРАЙ САМ　✳</div>
+<div class="ticker">МЕНЬШЕ АВТОПИЛОТА　 / 　БОЛЬШЕ РЕАЛЬНОЙ ЖИЗНИ　 / 　ВЫБИРАЙ САМ　 / </div>
 <div class="wrap section"><div class="section-head"><div><div class="kicker">Не очередной челлендж</div><h2>Не запрет.<br>Новый выбор.</h2></div><p>Без обещаний стать идеальным за ночь. Только честное наблюдение, небольшие действия и движение вперёд — день за днём.</p></div><div class="feature-grid"><article class="feature"><div class="num">01 / ЗАМЕТИТЬ</div><div><h3>Увидеть сценарий</h3><p>Понять, что запускает автоматические действия и в какие моменты теряется выбор.</p></div></article><article class="feature"><div class="num">02 / ВЫБРАТЬ</div><div><h3>Вернуть контроль</h3><p>Поставить паузу между импульсом и действием — без самоунижения и чувства вины.</p></div></article><article class="feature"><div class="num">03 / СОБРАТЬ</div><div><h3>Создать опору</h3><p>Выстроить ежедневные действия, которые помогают вернуть ясность, энергию и время.</p></div></article></div></div>
 <div class="dark-section"><div class="wrap"><div class="kicker">Твой темп. Твой выбор.</div><h2>31 день.<br>Один день за раз.</h2><p>Пройди тест, выбери свой фокус и возвращайся к себе через короткую ежедневную запись. После каждого заполненного дня тебя ждёт лозунг дня.</p><button class="btn" data-view="journal">Начать дневник ↗</button></div></div>
 </section>
@@ -174,7 +253,7 @@ hr,.divider{border-color:rgba(237,228,212,.25)}
 <div class="field"><label for="choice">Какой выбор ты сделал сегодня — или хочешь сделать завтра?</label><textarea id="choice" placeholder="Даже маленький шаг имеет значение…"></textarea></div>
 <div class="field"><label for="noteText">Заметка себе</label><textarea id="noteText" placeholder="Что важно не забыть? Что помогло? Что попробуешь иначе?"></textarea></div>
 <div class="day-slogan" id="sloganBox" hidden><div class="slogan-kicker">Лозунг дня / сохраняй его</div><div class="slogan-text" id="sloganText"></div><div class="slogan-note" id="sloganNote"></div></div>
-<div class="journal-actions"><button class="small-btn" id="prevDay">← Предыдущий</button><span class="saved-note" id="saveState">Записи сохраняются на этом устройстве</span><button class="btn" id="completeDay">Завершить день ↗</button><button class="small-btn" id="nextDay">Следующий →</button></div>
+<div class="journal-actions"><button class="small-btn" id="prevDay">← Предыдущий</button><span class="saved-note" id="saveState" role="status" aria-live="polite">Записи сохраняются на этом устройстве</span><button class="btn" id="completeDay">Завершить день ↗</button><button class="small-btn" id="nextDay">Следующий →</button></div>
 </div></div><div style="padding:22px 0 60px"><button class="small-btn" data-view="home">← На главную</button></div></div></section>
 <section class="view" id="view-progress"><div class="wrap"><div class="page-head"><div><div class="kicker">Путь / обзор</div><h2>Твой прогресс.</h2></div><p>Не оценивай себя только по идеальным дням. Возвращение к выбранному пути — тоже часть практики.</p></div><div class="overview"><div class="stat"><strong id="progDone">0 / 31</strong><span>Завершено дней</span></div><div class="stat"><strong id="progPct">0%</strong><span>Прогресс программы</span></div></div><div class="panel"><div class="kicker">Твой результат теста</div><h3 id="profileTitle" class="result-title">Тест ещё не пройден</h3><p id="profileDesc" class="result-copy">Пройди тест, чтобы увидеть ориентир для самонаблюдения и получить отправную точку.</p><button class="btn" data-view="test">Пройти тест ↗</button></div><div class="panel"><div class="kicker">Лозунги, которые ты уже открыл</div><div id="sloganHistory" class="feature-grid"></div></div><div style="padding-bottom:60px"><button class="small-btn" id="resetAll">Сбросить локальные данные</button><p class="note">Сброс удалит тест, записи дневника и прогресс только в этом браузере. Это действие нельзя отменить.</p></div></div></section>
 </main><footer class="wrap foot"><span>ВОЛЯ © 2026</span><span>Меньше автопилота. Больше жизни.</span><span>31-дневная практика</span></footer>
@@ -231,12 +310,32 @@ escape:{name:"БЕГЛЕЦ",desc:"Похоже, привычки иногда с
 auto:{name:"АВТОПИЛОТ",desc:"Похоже, многое запускается по привычному сценарию ещё до осознанного решения. Начни с наблюдения за временем, местом и триггерами, затем измени один маленький элемент рутины."},
 thrill:{name:"ИСКАТЕЛЬ ОЩУЩЕНИЙ",desc:"Тебе может быть легче начать с мощного импульса, чем поддерживать спокойный ритм. Точка роста — не ждать мотивации, а создать короткие действия, которые дают интерес и движение без крайностей."},
 control:{name:"ВНУТРЕННИЙ КРИТИК",desc:"Похоже, ты можешь требовать от себя жёсткого контроля и болезненно переживать ошибки. Устойчивость строится не на идеальности: оценивай прогресс по возвращению к выбранному пути, а не по отсутствию промахов."},
-author:{name:"АВТОР СВОЕЙ ЖИЗНИ",desc:"Ты склонен искать осознанные решения и строить систему, а не полагаться только на импульс. Следующий шаг — превратить понимание в простые повторяемые действия и проверять, что действительно помогает."}
+author:{name:"АВТОР СВОЕЙ ЖИЗНИ",desc:"Ты склонен искать осознанные решения и строить систему, а не полагаться только на импульс. Следующий шаг — превратить понимание в простые повторяемые действия и проверять, что действительно помогает."},
+mixed:{name:"СМЕШАННЫЙ СЦЕНАРИЙ",desc:"В ответах проявились разные способы реагирования — и это нормально. Не обязательно сводить себя к одному типу. В течение недели отмечай, что запускает привычку в конкретной ситуации, и выбирай один небольшой эксперимент без самокритики."}
 };
 const $=id=>document.getElementById(id);
-let state=load(),qIndex=0,qAnswers=state.testAnswers||Array(10).fill(null),currentDay=state.currentDay||1;
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||{entries:{},testAnswers:null,profile:null,currentDay:1}}catch(e){return {entries:{},testAnswers:null,profile:null,currentDay:1}}}
-function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+const DEFAULT_STATE=()=>({entries:{},testAnswers:null,testIndex:0,profile:null,currentDay:1});
+let storageAvailable=true;
+function load(){
+  let raw=null;
+  try{raw=localStorage.getItem(KEY)}catch(e){storageAvailable=false}
+  let parsed={};
+  try{parsed=raw?JSON.parse(raw):{}}catch(e){parsed={}}
+  const base=DEFAULT_STATE();
+  if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))parsed={};
+  const entries=parsed.entries&&typeof parsed.entries==='object'&&!Array.isArray(parsed.entries)?parsed.entries:{};
+  const cleanEntries={};
+  Object.entries(entries).forEach(([day,e])=>{const n=Number(day);if(Number.isInteger(n)&&n>=1&&n<=31&&e&&typeof e==='object')cleanEntries[n]={mood:typeof e.mood==='string'?e.mood:'',energy:Number.isFinite(Number(e.energy))?Math.min(10,Math.max(1,Number(e.energy))):5,focus:typeof e.focus==='string'?e.focus:'',trigger:typeof e.trigger==='string'?e.trigger:'',choice:typeof e.choice==='string'?e.choice:'',note:typeof e.note==='string'?e.note:'',done:e.done===true,slogan:typeof e.slogan==='string'?e.slogan:null};});
+  const answers=Array.isArray(parsed.testAnswers)?Array.from({length:10},(_,i)=>Number.isInteger(parsed.testAnswers[i])&&parsed.testAnswers[i]>=0&&parsed.testAnswers[i]<5?parsed.testAnswers[i]:null):null;
+  const profilesAllowed=['escape','auto','thrill','control','author','mixed'];
+  return {entries:cleanEntries,testAnswers:answers,testIndex:Number.isInteger(parsed.testIndex)?Math.min(9,Math.max(0,parsed.testIndex)):0,profile:profilesAllowed.includes(parsed.profile)?parsed.profile:null,currentDay:Number.isInteger(parsed.currentDay)?Math.min(31,Math.max(1,parsed.currentDay)):1};
+}
+let state=load(),qIndex=state.testIndex||0,qAnswers=state.testAnswers||Array(10).fill(null),currentDay=state.currentDay||1;
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(state));storageAvailable=true;return true}
+  catch(e){storageAvailable=false;return false}
+}
+function saveStatusText(){return storageAvailable?'Сохранено на этом устройстве':'Автосохранение недоступно — скачай или скопируй важные записи';}
 const EASE='cubic-bezier(.2,.75,.2,1)',EASE_IO='cubic-bezier(.7,0,.2,1)';
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 const canAnimate=()=>!reduceMotion.matches&&typeof Element.prototype.animate==='function';
@@ -249,7 +348,7 @@ const target=$('view-'+name);
 document.querySelectorAll('.view.active').forEach(v=>v.classList.remove('active'));
 target.classList.add('active');
 refreshView(name);
-document.querySelectorAll('.nav a').forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+document.querySelectorAll('[data-view]').forEach(a=>{if(a.dataset.view===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
 const root=document.documentElement;root.style.scrollBehavior='auto';window.scrollTo(0,0);root.style.scrollBehavior='';
 const h=target.querySelector('h1,h2');
 if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
@@ -284,8 +383,8 @@ a.finished.then(()=>{mount();a.cancel();if(fadeIn)el.animate([{opacity:0,transfo
 function buildQuestion(dir){
 const q=questions[qIndex],box=$('qOptions'),title=$('qTitle');
 clearAnims(title);clearAnims(box);
-$('qCount').textContent=`ВОПРОС ${String(qIndex+1).padStart(2,'0')} / 10`;
-$('qProgress').style.width=((qIndex+1)*10)+'%';
+$('qCount').textContent=`ВОПРОС ${String(qIndex+1).padStart(2,'0')} / ${String(questions.length).padStart(2,'0')}`;
+$('qProgress').style.width=((qIndex+1)/questions.length*100)+'%';
 title.textContent=q.q;
 box.innerHTML='';
 box.style.setProperty('--dx',dir<0?'-16px':'16px');
@@ -297,18 +396,19 @@ const span=document.createElement('span');span.textContent=item[0];
 lab.append(inp,span);box.append(lab);
 });
 $('qBack').disabled=qIndex===0;
-$('qNext').textContent=qIndex===9?'Узнать результат ↗':'Далее ↗';
+$('qNext').textContent=qIndex===questions.length-1?'Узнать результат ↗':'Далее ↗';
 $('qError').textContent='';
 if(dir&&canAnimate())title.animate([{opacity:0,transform:`translateX(${dir<0?-26:26}px)`},{opacity:1,transform:'none'}],{duration:360,easing:EASE});
 }
 function renderQuestion(){buildQuestion(0)}
 function selectAnswer(i){
 qAnswers[qIndex]=i;
+state.testAnswers=qAnswers.slice();state.testIndex=qIndex;save();
 $('qOptions').querySelectorAll('.option').forEach((lab,k)=>{lab.classList.toggle('selected',k===i);lab.querySelector('input').checked=(k===i)});
 $('qError').textContent='';
 }
 function stepQuestion(delta){
-qIndex+=delta;
+qIndex=Math.max(0,Math.min(questions.length-1,qIndex+delta));state.testIndex=qIndex;save();
 const tok=++qTok,t=$('qTitle'),o=$('qOptions');
 if(!canAnimate()){buildQuestion(delta);return}
 clearAnims(t);clearAnims(o);
@@ -320,7 +420,7 @@ function nudge(){if(canAnimate())$('qOptions').animate([{transform:'translateX(0
 function onBack(){if(qIndex>0)stepQuestion(-1)}
 function onNext(){
 if(qAnswers[qIndex]===null){$('qError').textContent='Выбери вариант, который ближе тебе.';nudge();return}
-if(qIndex<9)stepQuestion(1);else finishTest();
+if(qIndex<questions.length-1)stepQuestion(1);else finishTest();
 }
 function bindQuiz(){$('qBack').onclick=onBack;$('qNext').onclick=onNext}
 bindQuiz();
@@ -328,13 +428,13 @@ function finishTest(){
 if(finishing)return;finishing=true;
 let score={escape:0,auto:0,thrill:0,control:0,author:0};
 qAnswers.forEach((ans,i)=>{let key=questions[i].a[ans][1];if(key!=='neutral')score[key]++});
-let winner=Object.keys(score).sort((a,b)=>score[b]-score[a])[0];
-state.testAnswers=qAnswers.slice();state.profile=winner;save();
+const maxScore=Math.max(...Object.values(score));const leaders=Object.keys(score).filter(k=>score[k]===maxScore);const winner=leaders.length===1?leaders[0]:'mixed';
+state.testAnswers=qAnswers.slice();state.testIndex=0;state.profile=winner;save();
 const html=`<div class="result-label" style="--n:0">ТВОЯ ТОЧКА СТАРТА</div><h3 class="result-title" style="--n:1">${profiles[winner].name}</h3><p class="result-copy" style="--n:2">${profiles[winner].desc}</p><div class="note" style="--n:3">Это ориентир для самонаблюдения, а не диагноз и не фиксированный тип личности. Мастурбация сама по себе не является проблемой; важно, мешает ли поведение твоей жизни и совпадает ли оно с твоими целями.</div><div class="controls" style="--n:4"><button class="small-btn" id="retake" type="button">Пройти ещё раз ↺</button><button class="btn" id="toJournal" type="button">Открыть дневник ↗</button></div>`;
 swapMain($('testMain'),()=>{const m=$('testMain');m.innerHTML=html;m.classList.add('result-reveal');$('retake').onclick=retake;$('toJournal').onclick=()=>showView('journal');finishing=false},false);
 }
 function retake(){
-qIndex=0;qAnswers=Array(10).fill(null);
+qIndex=0;qAnswers=Array(questions.length).fill(null);state.testAnswers=null;state.testIndex=0;state.profile=null;save();
 swapMain($('testMain'),()=>{const m=$('testMain');m.classList.remove('result-reveal');m.innerHTML=QUIZ_HTML;bindQuiz();buildQuestion(0)},true);
 }
 function getEntry(day){return state.entries[day]||{mood:'',energy:5,focus:'',trigger:'',choice:'',note:'',done:false,slogan:null}}
@@ -365,7 +465,7 @@ clearAnims(el);
 el.animate([{opacity:0,transform:`translateX(${dir*22}px)`},{opacity:1,transform:'none'}],{duration:360,delay:Math.min(i*35,210),easing:EASE,fill:'backwards'});
 });
 }
-function renderJournal(dir){renderDayGrid();let e=getEntry(currentDay);$('dayLabel').textContent=`ДЕНЬ ${String(currentDay).padStart(2,'0')} / 31`;$('dayTitle').textContent=dayTitles[currentDay-1];$('dayStatus').textContent=e.done?'ДЕНЬ ЗАВЕРШЁН':'ЕЩЁ НЕ ЗАПОЛНЕН';$('mood').value=e.mood||'';$('energy').value=e.energy||5;$('energyOut').textContent=$('energy').value;$('focus').value=e.focus||'';$('trigger').value=e.trigger||'';$('choice').value=e.choice||'';$('noteText').value=e.note||'';$('completeDay').textContent=e.done?'Обновить запись ↗':'Завершить день ↗';$('saveState').textContent='Сохраняется на этом устройстве';$('prevDay').disabled=currentDay===1;$('nextDay').disabled=currentDay===31;$('sloganBox').hidden=!e.done;setSlogan(e.done?(e.slogan||slogans[currentDay-1][0]):'');$('sloganNote').textContent=e.done?slogans[currentDay-1][1]:'';updateStats();if(dir)animateDay(dir)}
+function renderJournal(dir){renderDayGrid();let e=getEntry(currentDay);$('dayLabel').textContent=`ДЕНЬ ${String(currentDay).padStart(2,'0')} / 31`;$('dayTitle').textContent=dayTitles[currentDay-1];$('dayStatus').textContent=e.done?'ДЕНЬ ЗАВЕРШЁН':'ЕЩЁ НЕ ЗАПОЛНЕН';$('mood').value=e.mood||'';$('energy').value=e.energy||5;$('energyOut').textContent=$('energy').value;$('focus').value=e.focus||'';$('trigger').value=e.trigger||'';$('choice').value=e.choice||'';$('noteText').value=e.note||'';$('completeDay').textContent=e.done?'Обновить запись ↗':'Завершить день ↗';$('saveState').textContent=saveStatusText();$('prevDay').disabled=currentDay===1;$('nextDay').disabled=currentDay===31;$('sloganBox').hidden=!e.done;setSlogan(e.done?(e.slogan||slogans[currentDay-1][0]):'');$('sloganNote').textContent=e.done?slogans[currentDay-1][1]:'';updateStats();if(dir)animateDay(dir)}
 let revealT=0;
 function playReveal(){
 const sb=$('sloganBox');
@@ -379,22 +479,22 @@ const b=$('dayGrid').children[currentDay-1];
 if(b&&canAnimate())b.animate([{transform:'scale(.7)'},{transform:'scale(1.14)',offset:.6},{transform:'scale(1)'}],{duration:520,easing:EASE});
 }
 const dayTitles=["Начни с честности.","Заметь импульс.","Найди свою паузу.","Что запускает сценарий?","Выбор вместо реакции.","Поговори с собой иначе.","Пересмотри правила.","Увидь свой ритм.","Освободи внимание.","Назови, что важно.","Маленький шаг.","Создай альтернативу.","Убери один триггер.","Поддержи тело.","Верни себе время.","Без идеальности.","Дай эмоции имя.","Сделай среду союзником.","Отметь, что работает.","Выбери восстановление.","Заметь свои победы.","Попроси поддержку.","Создай устойчивый ритуал.","Проверь свои ожидания.","Вернись после трудного дня.","Выбери реальную жизнь.","Укрепи новую опору.","Что изменилось?","Собери свой план.","Закрепи свой выбор.","Продолжай по-своему."];
-['mood','energy','focus','trigger','choice','noteText'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='energy')$('energyOut').textContent=$('energy').value;saveCurrentFields();$('saveState').textContent='Черновик сохранён'}));
+['mood','energy','focus','trigger','choice','noteText'].forEach(id=>$(id).addEventListener('input',()=>{if(id==='energy')$('energyOut').textContent=$('energy').value;saveCurrentFields();$('saveState').textContent=saveStatusText()}));
 $('completeDay').addEventListener('click',()=>{
 saveCurrentFields();let e=getEntry(currentDay);
 if(!e.mood&&!e.trigger.trim()&&!e.choice.trim()&&!e.note.trim()){if(!confirm('Запись почти пустая. Всё равно завершить этот день?'))return}
 const first=!e.done;
 e.done=true;e.slogan=slogans[currentDay-1][0];state.entries[currentDay]=e;save();
 renderJournal();
-if(first){playReveal();pulseDay()}else{$('saveState').textContent='Запись обновлена'}
+if(first){playReveal();pulseDay()}$('saveState').textContent=saveStatusText()
 });
 $('prevDay').addEventListener('click',()=>{if(currentDay>1)switchDay(currentDay-1)});
 $('nextDay').addEventListener('click',()=>{if(currentDay<31)switchDay(currentDay+1)});
 function updateStats(){let done=Object.values(state.entries).filter(e=>e.done).length;let pct=Math.round(done/31*100);['journalDone','progDone'].forEach(id=>$(id).textContent=`${done} / 31`);['journalPercent','progPct'].forEach(id=>$(id).textContent=pct+'%');$('daysCount').textContent=`${done}/31`}
 function renderProgress(){updateStats();let title=$('profileTitle'),desc=$('profileDesc');if(state.profile&&profiles[state.profile]){title.textContent=profiles[state.profile].name;desc.textContent=profiles[state.profile].desc}else{title.textContent='Тест ещё не пройден';desc.textContent='Пройди тест, чтобы увидеть ориентир для самонаблюдения и получить отправную точку.'}let hist=$('sloganHistory');hist.innerHTML='';let entries=Object.entries(state.entries).filter(([d,e])=>e.done).sort((a,b)=>Number(a[0])-Number(b[0]));if(!entries.length){hist.innerHTML='<p class="result-copy">Заверши первый день — здесь появится история открытых лозунгов.</p>';return}entries.forEach(([d,e])=>{let art=document.createElement('article');art.className='feature';art.innerHTML=`<div class="num">ДЕНЬ ${String(d).padStart(2,'0')}</div><div><h3 style="font-size:17px">${e.slogan||slogans[Number(d)-1][0]}</h3><p>${slogans[Number(d)-1][1]}</p></div>`;art.style.cursor='pointer';art.onclick=()=>{currentDay=Number(d);state.currentDay=currentDay;save();showView('journal')};hist.append(art)})}
-$('resetAll').addEventListener('click',()=>{if(confirm('Точно удалить тест, все записи и прогресс с этого устройства?')){localStorage.removeItem(KEY);state={entries:{},testAnswers:null,profile:null,currentDay:1};qIndex=0;qAnswers=Array(10).fill(null);location.reload()}});
+$('resetAll').addEventListener('click',()=>{if(confirm('Точно удалить тест, все записи и прогресс с этого устройства?')){try{localStorage.removeItem(KEY)}catch(e){}state=DEFAULT_STATE();qIndex=0;qAnswers=Array(questions.length).fill(null);location.reload()}});
 $('energy').addEventListener('input',()=> $('energyOut').textContent=$('energy').value);
-renderQuestion();renderJournal();updateStats();
+if(state.profile&&qAnswers.length===questions.length&&qAnswers.every(a=>a!==null)){finishTest()}else{renderQuestion()}renderJournal();updateStats();
 })();
 </script>
 </body></html>
